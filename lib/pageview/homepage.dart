@@ -91,9 +91,10 @@ class Homepage extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   ctx.read<GroceryListProvider>().swithGroceryListState(
-                    GroceryListState.vegatalbe,
+                    GroceryListState.vegatable,
                   );
                   ctx.read<NavigationProvider>().setCurrentIndex(1);
+                  ctx.read<NavigationProvider>().setCurrentGrocertTapIndex(1);
                 },
                 child: Text("See All"),
               ),
@@ -124,6 +125,7 @@ class Homepage extends StatelessWidget {
                     GroceryListState.fruit,
                   );
                   ctx.read<NavigationProvider>().setCurrentIndex(1);
+                  ctx.read<NavigationProvider>().setCurrentGrocertTapIndex(0);
                 },
                 child: Text("See All"),
               ),

@@ -72,8 +72,8 @@ class GroceryListProvider with ChangeNotifier {
   }
 
   bool isVegetableState() {
-    return _groceryListState == GroceryListState.vegatalbe;
+    return _groceryListState == GroceryListState.vegatable;
   }
 }
 
-enum GroceryListState { fruit, vegatalbe }
+enum GroceryListState { fruit, vegatable }
