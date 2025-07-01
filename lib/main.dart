@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:new_app/main_nav_page.dart';
+import 'package:new_app/provider/Auth/Login_page.dart';
+import 'package:new_app/provider/Auth/register_page.dart';
 import 'package:new_app/provider/Navigation_provider.dart';
 import 'package:new_app/provider/cart_provider.dart';
 import 'package:new_app/provider/favorite_provider.dart';
+import 'package:new_app/provider/form_provider.dart';
 import 'package:new_app/provider/grocery_list_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +17,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
         ChangeNotifierProvider(create: (_) => GroceryListProvider()),
+        ChangeNotifierProvider(create: (_) => FormProvider()),
       ],
       child: const MyApp(),
     ),
@@ -33,7 +37,11 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSans',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MainNavPage(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => RegisterPage(),
+      },
     );
   }
 }
