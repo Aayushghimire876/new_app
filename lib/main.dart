@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_app/main_nav_page.dart';
 import 'package:new_app/provider/Auth/Login_page.dart';
 import 'package:new_app/provider/Auth/register_page.dart';
+import 'package:new_app/provider/Auth/splash/splash_page.dart';
 import 'package:new_app/provider/Navigation_provider.dart';
 import 'package:new_app/provider/cart_provider.dart';
 import 'package:new_app/provider/favorite_provider.dart';
@@ -37,10 +38,13 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSans',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/login',
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashPage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => RegisterPage(),
+         '/mainNavPage': (context) => const MainNavPage(),
+
       },
     );
   }

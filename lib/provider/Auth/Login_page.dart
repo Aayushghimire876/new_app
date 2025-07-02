@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/provider/Auth/local_storage.dart';
 import 'package:new_app/provider/form_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -72,16 +73,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
+                      if (emailController.text == 'Aayush@gmail.com' &&
+                          passwordController.text == 'Aayush1234') {
+                        LocalStorageService.setUserLoggedIn();
+                        Navigator.pushNamed(context, '/mainNavPage');
+                      }
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Form Validation Successful !!!'),
+                          content: Text('Login Successful !!!'),
                           backgroundColor: Colors.green,
                         ),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Form Validation Successful !!!'),
+                          content: Text('Email and Password Invalid !!!'),
                           backgroundColor: Colors.red,
                         ),
                       );

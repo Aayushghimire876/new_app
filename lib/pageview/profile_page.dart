@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_app/widgets/logout_dialogbox.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -176,27 +177,35 @@ class ProfilePage extends StatelessWidget {
                 Icon(Icons.keyboard_arrow_right),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  spacing: 5,
-                  children: [
-                    CircleAvatar(
-                      radius: 18,
-                      child: Icon(Icons.exit_to_app, size: 18),
-                    ),
-                    Text(
-                      "Logout",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
+            InkWell(
+              onTap: () {
+                showDialog(
+                  context: ctx,
+                  builder: (context) => LogoutAlertbox(),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    spacing: 5,
+                    children: [
+                      CircleAvatar(
+                        radius: 18,
+                        child: Icon(Icons.exit_to_app, size: 18),
                       ),
-                    ),
-                  ],
-                ),
-                Icon(Icons.keyboard_arrow_right),
-              ],
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Icon(Icons.keyboard_arrow_right),
+                ],
+              ),
             ),
           ],
         ),
