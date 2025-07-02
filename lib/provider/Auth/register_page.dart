@@ -11,6 +11,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController userNameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneNoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -25,124 +26,139 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              spacing: 20,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assest/auth/authimage2.jpg',
-                  height: 250,
-                  width: 250,
-                ),
-                Text(
-                  'Register Form',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
-                TextFormField(
-                  controller: userNameController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: formProvider.nameValidator,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text('Username'),
-                    hintText: 'Enter the username',
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                spacing: 20,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assest/auth/authimage2.jpg',
+                    height: 250,
+                    width: 250,
                   ),
-                ),
-                TextFormField(
-                  controller: emailController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                  validator: formProvider.emailValidator,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text('Email'),
-                    hintText: 'Enter the email',
+                  Text(
+                    'Register Form',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   ),
-                ),
-                TextFormField(
-                  controller: phoneNoController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                  validator: formProvider.phoneNoValidator,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text('Phone No'),
-                    hintText: 'Enter the phone no.',
-                  ),
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                  validator: formProvider.passwordValidator,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text('Password'),
-                    hintText: 'Enter the password',
-                  ),
-                ),
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  TextFormField(
+                    controller: userNameController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: formProvider.nameValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Username'),
+                      hintText: 'Enter the username',
                     ),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Form Validation Successful !!!'),
-                          backgroundColor: Colors.green,
+                  TextFormField(
+                    controller: addressController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: formProvider.addressValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Address'),
+                      hintText: 'Enter the address',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: emailController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                    validator: formProvider.emailValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Email'),
+                      hintText: 'Enter the email',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: phoneNoController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                    validator: formProvider.phoneNoValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Phone No'),
+                      hintText: 'Enter the phone no.',
+                    ),
+                  ),
+                  TextFormField(
+                    controller: passwordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                    validator: formProvider.passwordValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Password'),
+                      hintText: 'Enter the password',
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Form Validation Successful !!!'),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Form Validation Successful !!!'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Already have an account?',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          visualDensity: VisualDensity.compact,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 0,
+                            horizontal: 10,
+                          ),
                         ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Form Validation Successful !!!'),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  },
-                  child: Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        visualDensity: VisualDensity.compact,
-                        padding: EdgeInsets.symmetric(
-                          vertical: 0,
-                          horizontal: 10,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        child: Text(
+                          'Login Here',
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: Text('Login Here', style: TextStyle(fontSize: 16)),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

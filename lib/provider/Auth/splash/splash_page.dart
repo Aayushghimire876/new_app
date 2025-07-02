@@ -41,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
               spacing: 15,
               children: [
                 Image.asset(
-                  "assets/splash/splash_icon.png",
+                  "assest/splash/splash_icon.png",
                   height: 50,
                   width: 50,
                 ),

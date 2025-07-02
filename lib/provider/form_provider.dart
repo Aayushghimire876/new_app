@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:new_app/utils/regex_extension.dart';
 
 class FormProvider with ChangeNotifier {
-
   String? nameValidator(String? name) {
     if (name == '' || name == null) {
       return 'Name cannot be empty';
     } else if (!name.isValidName) {
       return 'Invalid Name';
+    } else {
+      return null;
+    }
+  }
+
+  String? addressValidator(String? name) {
+    if (name == '' || name == null) {
+      return 'Address cannot be empty';
     } else {
       return null;
     }
